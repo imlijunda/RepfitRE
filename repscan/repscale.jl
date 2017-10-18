@@ -104,3 +104,18 @@ function calc_net_erep!(rsc::RepScale)
 
     return rsc
 end
+
+function flatten(rsc::RepScale)
+
+    d = dp[]
+    erep = dp[]
+    push!(d, rsc.d)
+    push!(erep, rsc.net_erep)
+    for i = 1:length(rsc.scaled)
+        (new_d, new_e) = flatten(rsc.scaled[i])
+        d = vcat(d, new_d)
+        erep = vcat(erep, new_e)
+    end
+
+    return d, erep
+end
