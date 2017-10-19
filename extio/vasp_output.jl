@@ -16,3 +16,10 @@ function vasp_esigma0(outcar::AbstractString)
 
     return esigma0
 end
+
+function vasp_esigma0_ha(outcar::AbstractString)
+
+    ev = vasp_esigma0(outcar)
+
+    return  ev * hartree_per_ev
+end
