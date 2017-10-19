@@ -1,9 +1,9 @@
 function dftb_mermin(detailed_out::AbstractString)
 
-    open(detailed_out, "r") do f
-        data = readlines(f)
-    end
+    f = open(detailed_out, "r")
+    data = readlines(f)
     n = length(data)
+    close(f)
 
     mermin = Inf
     for i = n:-1:1
@@ -19,10 +19,10 @@ end
 
 function dftb_repulsive(detailed_out::AbstractString)
 
-    open(detailed_out, "r") do f
-        data = readlines(f)
-    end
+    f = open(detailed_out, "r")
+    data = readlines(f)
     n = length(data)
+    close(f)
 
     repulsive = Inf
     for i = n:-1:1

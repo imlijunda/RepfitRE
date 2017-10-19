@@ -1,9 +1,9 @@
 function vasp_esigma0(outcar::AbstractString)
 
-    open(outcar, "r") do f
-        data = readlines(f)
-    end
+    f=open(outcar, "r")
+    data = readlines(f)
     n = length(data)
+    close(f)
 
     esigma0 = Inf
     for i = n:-1:1
