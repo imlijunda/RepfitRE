@@ -12,8 +12,8 @@ atomic_sym(at_num::Vector{Int}) = [atomic_sym(at_num[i]) for i in 1:length(at_nu
 atomic_num(at_sym::Vector{T}) where {T<:AbstractString} = [atomic_num(at_sym[i]) for i in 1:length(at_sym)]
 
 # Helper functions for filenames
-wd_fname(wd::String, fname::String) = endswith(wd, "/") ? wd * fname : wd * "/" * fname
-wd_tagfname(wd::String, tag::Int, prefix::String = "") = endswith(wd, "/") ? wd * prefix * "$tag" : wd * "/" * prefix * "$tag"
+wd_fname(wd::AbstractString, fname::AbstractString) = endswith(wd, "/") ? wd * fname : wd * "/" * fname
+wd_tagfname(wd::AbstractString, tag::Int, prefix::AbstractString = "") = endswith(wd, "/") ? wd * prefix * "$tag" : wd * "/" * prefix * "$tag"
 
 # Parsing
 parse_list(dt::DataType, str::Union{Vector{T}, SubArray{T, 1}}) where {T<:AbstractString} = [parse(dt, str[i]) for i in 1:length(str)]

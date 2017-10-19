@@ -1,3 +1,5 @@
+# These energies are all in Hartree!
+
 function dftb_mermin(detailed_out::AbstractString)
 
     f = open(detailed_out, "r")

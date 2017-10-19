@@ -1,4 +1,4 @@
-function read_xyz(filepath::String)
+function read_xyz(filepath::AbstractString)
 
     f = open(filepath, "r")
     lines = readlines(f)
@@ -27,7 +27,7 @@ function read_xyz(filepath::String)
     return Geometry(coord, sp_list, comment)
 end
 
-function write_xyz(filepath::String, geo::Geometry)
+function write_xyz(filepath::AbstractString, geo::Geometry)
 
     coord = geo.lattice * geo.coord
     b = 0
@@ -54,7 +54,7 @@ function write_xyz(filepath::String, geo::Geometry)
     return b
 end
 
-function read_poscar(filepath::String)
+function read_poscar(filepath::AbstractString)
 
     f = open(filepath, "r")
     lines = readlines(f)
@@ -130,7 +130,7 @@ function read_poscar(filepath::String)
     return Geometry(lattice, coord, sp, comment)
 end
 
-function write_poscar(filepath::String, geo::Geometry, constraints::Matrix{Bool} = Matrix{Bool}(0,0))
+function write_poscar(filepath::AbstractString, geo::Geometry, constraints::Matrix{Bool} = Matrix{Bool}(0,0))
 
     b = 0
     open(filepath, "w") do f
@@ -203,7 +203,7 @@ function write_poscar(filepath::String, geo::Geometry, constraints::Matrix{Bool}
     return b
 end
 
-function read_gen(filepath::String)
+function read_gen(filepath::AbstractString)
 
     f = open(filepath, "r")
     lines = readlines(f)
@@ -249,7 +249,7 @@ function read_gen(filepath::String)
     return reslt
 end
 
-function write_gen(filepath::String, geo::Geometry)
+function write_gen(filepath::AbstractString, geo::Geometry)
 
     b = 0
     open(filepath, "w") do f

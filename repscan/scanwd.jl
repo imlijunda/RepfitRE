@@ -3,10 +3,10 @@ mutable struct ScanWd
     wd::String
     subwd::Vector{ScanWd}
 
-    function ScanWd(wd::String, rsc::RepScale)
+    function ScanWd(wd::AbstractString, rsc::RepScale)
 
         swd = new()
-        swd.wd = wd
+        swd.wd = string(wd)
         swd.subwd = ScanWd[]
 
         for i = 1:length(rsc.scaled)
