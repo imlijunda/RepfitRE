@@ -160,6 +160,7 @@ function rep_coefs_3rd(r::Vector{dp}, erep::Vector{dp}; weight::Vector{dp} = Vec
     return knots, coefs
 end
 
+default_weight(v::Vector{dp}) = ones(dp, length(v))
 function merge_scans(r_data::Vector{Vector{dp}}, e_data::Vector{Vector{dp}}, weight::Vector{dp})
 
     total_size = 0

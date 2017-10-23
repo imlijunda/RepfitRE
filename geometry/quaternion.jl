@@ -56,13 +56,7 @@ function default_pair(n::Int)
 
     return ipair
 end
-
-function default_weight(n::Int)
-
-    weight = ones(dp, n)
-
-    return weight
-end
+default_weight(n::Int) = ones(dp, n)
 
 function coord_center!(coord1::Matrix{dp}, coord2::Matrix{dp}, ipair::Matrix{Int}, weight::Vector{dp})
 
