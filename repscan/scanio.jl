@@ -1,6 +1,6 @@
 const SCALE_PREFIX = "scaled-"
 
-function write_structures(wd::AbstractString, geo::Geometry, vasp = "POSCAR", dftb = "geo.gen")
+function write_structures(wd::AbstractString, geo::Geometry; vasp = "POSCAR", dftb = "geo.gen")
 
     b = 0
     fname = wd_fname(wd, vasp)
@@ -11,7 +11,7 @@ function write_structures(wd::AbstractString, geo::Geometry, vasp = "POSCAR", df
     return b
 end
 
-function write_repscan_structures(wd::AbstractString, rsc::RepScale, vasp = "POSCAR", dftb = "geo.gen")
+function write_repscan_structures(wd::AbstractString, rsc::RepScale; vasp = "POSCAR", dftb = "geo.gen")
 
     # write root structure first
     mkpath(wd)
@@ -29,7 +29,7 @@ function write_repscan_structures(wd::AbstractString, rsc::RepScale, vasp = "POS
     return f
 end
 
-function read_repscan_energies!(wd::AbstractString, rsc::RepScale, vasp = "OUTCAR", dftb = "detailed.out")
+function read_repscan_energies!(wd::AbstractString, rsc::RepScale; vasp = "OUTCAR", dftb = "detailed.out")
 
     # read root energies
     fname = wd_fname(wd, vasp)
