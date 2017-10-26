@@ -69,29 +69,17 @@ function ranking_exp(fitness::Vector, n::Int, c::dp)
     return __select(p, n)
 end
 
-<<<<<<< HEAD
 function tournament(fitness::Vector, n::Int, gp_size::Int)
-=======
-function tournament(fitness::Vector, gp::Int, n::Int)
->>>>>>> origin/master
 
     ranks = sortperm(fitness)
     N = length(fitness)
     winners = Int[]
     for i = 1:n
-<<<<<<< HEAD
         candidates = randperm(N)[1:gp_size]
         f = fitness[candidates]
         m = 0.0
         best = 0
         for j = 1:gp_size
-=======
-        candidates = randperm(N)[1:gp]
-        f = fitness[candidates]
-        m = 0.0
-        best = 0
-        for j = 1:gp
->>>>>>> origin/master
             if f[j] > m
                 best = candidates[j]
                 m = f[j]
