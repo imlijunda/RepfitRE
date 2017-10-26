@@ -15,7 +15,7 @@ function write_repscan_structures(wd::AbstractString, rsc::RepScale; vasp = "POS
 
     # write root structure first
     mkpath(wd)
-    write_structures(wd, rsc.rep.nei.geo, vasp, dftb)
+    write_structures(wd, rsc.rep.nei.geo; vasp = vasp, dftb = dftb)
 
     # files written
     f = 2
@@ -23,7 +23,7 @@ function write_repscan_structures(wd::AbstractString, rsc::RepScale; vasp = "POS
     for i = 1:length(rsc.scaled)
         new_wd = wd_tagfname(wd, i, SCALE_PREFIX)
         new_rsc = rsc.scaled[i]
-        f += write_repscan_structures(new_wd, new_rsc, vasp, dftb)
+        f += write_repscan_structures(new_wd, new_rsc; vasp = vasp, dftb = dftb)
     end
 
     return f
@@ -45,7 +45,7 @@ function read_repscan_energies!(wd::AbstractString, rsc::RepScale; vasp = "OUTCA
     # read scaled structures
     for i = 1:length(rsc.scaled)
         new_wd = wd_tagfname(wd, i, SCALE_PREFIX)
-        read_repscan_energies!(new_wd, rsc.scaled[i], vasp, dftb)
+        read_repscan_energies!(new_wd, rsc.scaled[i]; vasp = vasp, dftb = dftb)
     end
 
     return rsc

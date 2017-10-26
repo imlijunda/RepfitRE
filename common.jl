@@ -11,10 +11,6 @@ atomic_num(at_sym::T) where {T<:AbstractString} = locate(at_sym, p_table)
 atomic_sym(at_num::Vector{Int}) = [atomic_sym(at_num[i]) for i in 1:length(at_num)]
 atomic_num(at_sym::Vector{T}) where {T<:AbstractString} = [atomic_num(at_sym[i]) for i in 1:length(at_sym)]
 
-# Helper functions for filenames
-wd_fname(wd::AbstractString, fname::AbstractString) = endswith(wd, "/") ? wd * fname : wd * "/" * fname
-wd_tagfname(wd::AbstractString, tag::Int, prefix::AbstractString = "") = endswith(wd, "/") ? wd * prefix * "$tag" : wd * "/" * prefix * "$tag"
-
 # Parsing
 parse_list(dt::DataType, str::Union{Vector{T}, SubArray{T, 1}}) where {T<:AbstractString} = [parse(dt, str[i]) for i in 1:length(str)]
 
@@ -26,7 +22,6 @@ dist(a::Vector{dp}, b::Vector{dp}) = norm(a - b)
 reciprocal(lattice::Matrix{dp}) = inv(lattice).'
 # Volume
 volume(lattice::Matrix{dp}) = det(lattice)
-
 
 # Simple polynomial fitting
 # increasing order

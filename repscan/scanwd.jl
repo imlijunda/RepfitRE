@@ -30,3 +30,13 @@ function flatten(swd::ScanWd)
 
     return f
 end
+
+function flatten(swd::Vector{ScanWd})
+
+    f = String[]
+    for i = 1:length(swd)
+        f = vcat(f, flatten(swd[i]))
+    end
+
+    return f
+end
